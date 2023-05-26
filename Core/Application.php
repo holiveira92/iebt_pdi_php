@@ -8,10 +8,10 @@ class Application
 
     public function __construct()
     {
-        $this->router = new Router(new Request());
+        $this->router = new Router(new Request(), new Response());
     }
 
-    public function run()
+    public function run(): void
     {
         $this->router->resolve();
     }

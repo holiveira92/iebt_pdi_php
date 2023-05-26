@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Core;
+namespace App\Controllers;
 
-use App\Core\Interfaces\ControllerInterface;
+use App\Core\Controller;
 use App\Core\Request;
 
-abstract class Controller implements ControllerInterface
+
+class BaseController extends Controller
 {
 
     public function __construct()
     {
-
     }
 
     public function get(Request $request)
@@ -32,4 +32,6 @@ abstract class Controller implements ControllerInterface
     {
         
     }
+
+
 }

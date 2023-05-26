@@ -8,26 +8,24 @@ use App\Core\Controller;
 
 class HomeController extends Controller
 {
-    protected Request $request;
     protected Response $response;
 
     public function __construct()
     {
-        $this->request = new Request();
         $this->response =  new Response();
     }
 
-    public function get()
+    public function get(Request $request)
     {
-        $params = $this->request->getBody(); 
+        $params = $request->getBody(); 
         echo $this->response
             ->setStatusHttpCode(200)
             ->handleData($params, "DADOS OBTIDOS COM SUCESSO VIA GET");
     }
 
-    public function post()
+    public function post(Request $request)
     {
-       $body = $this->request->getBody();
+       $body = $request->getBody();
        echo $this->response
             ->setStatusHttpCode(201)
             ->handleData($body, "DADOS ENVIADOS COM SUCESSO VIA POST");
