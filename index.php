@@ -1,28 +1,15 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/Helpers/helper.php';
+header('Content-Type: application/json');
 
 use App\Core\Application;
+use App\Controllers\HomeController;
 
 $app = new Application();
 
-$app->router->get('/', function() {
-    echo "HOME IEBT PHP";
-});
-
-$app->router->get('/iebt', function() {
-    echo "IEBT";
-});
-
-$app->router->get('/php', function() {
-    echo "PHP";
-});
-
-function pre($value)
-{
-    echo "<pre>";
-    var_dump($value);
-    echo "</pre>";
-}
+$app->router->get('/home', [ new HomeController(), 'get']);
+$app->router->post('/home', [ new HomeController(), 'post']);
 
 $app->run();

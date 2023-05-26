@@ -2,7 +2,6 @@
 
 namespace App\Core;
 
-
 class Request
 {
 
@@ -11,7 +10,7 @@ class Request
         
     }
 
-    public function getPath()
+    public function getPath(): string
     {
         $path = $_SERVER["REQUEST_URI"] ?? "/";
         $position = strpos($path, "?");
@@ -23,9 +22,29 @@ class Request
         return substr($path, 0, $position);
     }
 
-    public function getMethod()
+    public function getMethod(): string
     {
         return strtolower($_SERVER["REQUEST_METHOD"]);
+    }
+
+    public function getBody(): array
+    {
+        $body = [];
+
+        if ($this->getMethod() === "get") {
+            foreach($_GET as $key => $getData) {
+                $body[$key] = $getData;
+            }
+        }
+        
+        if ($this->getMethod() === "post") {
+            $post = json_decode(file_get_contents("php://input"), true);
+            foreach($post as $key => $postData) {
+                $body[$key] = $postData;
+            }
+        }
+
+        return $body;
     }
 
 }
