@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Main;
+namespace App\Core;
 
 class Application
 {
     public Router $router;
-    public Request $Request;
 
     public function __construct()
     {

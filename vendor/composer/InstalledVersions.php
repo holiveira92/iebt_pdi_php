@@ -31,11 +31,11 @@ private static $installed = array (
     array (
     ),
     'reference' => NULL,
-    'name' => 'hiago/iebt_router',
+    'name' => 'hiago/php_router',
   ),
   'versions' => 
   array (
-    'hiago/iebt_router' => 
+    'hiago/php_router' => 
     array (
       'pretty_version' => '1.0.0+no-version-set',
       'version' => '1.0.0.0',
